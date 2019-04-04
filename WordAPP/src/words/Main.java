@@ -31,19 +31,19 @@ import javax.swing.JTextField;
 
 public class Main extends JFrame  
  { 
- 	//¸ßÆµ´ÊÊä³ö°´Å¥ 
+ 	//é«˜é¢‘è¯è¾“å‡ºæŒ‰é’® 
  	private static JButton highFrequencyButton;  
- 	//Í³¼ÆÖ¸¶¨µ¥´Ê¸öÊı°´Å¥ 
+ 	//ç»Ÿè®¡æŒ‡å®šå•è¯ä¸ªæ•°æŒ‰é’® 
  	private static JButton wordCountButton; 
- 	//´ÊÆµĞ´ÈëÎÄ¼ş°´Å¥ 
+ 	//è¯é¢‘å†™å…¥æ–‡ä»¶æŒ‰é’® 
  	private static JButton printFile;  
- 	//ĞĞÊıµ¥´ÊÊıÍ³¼Æ°´Å¥ 
+ 	//è¡Œæ•°å•è¯æ•°ç»Ÿè®¡æŒ‰é’® 
  	private static JButton lineWordCount;  
- 	//°æÃæ 
+ 	//ç‰ˆé¢ 
  	private static JLabel input; 
- 	//¿ò¼Ü 
+ 	//æ¡†æ¶ 
  	private static JFrame statistics;  
- 	//ÎÄ¼şÃû 
+ 	//æ–‡ä»¶å 
  	private static JTextField file2;  
  	private static JLabel file ;
 
@@ -55,49 +55,49 @@ public class Main extends JFrame
  	 
  	public static FileReader fr; 
  	static BufferedReader br; 
- 	//ĞĞÊı 
+ 	//è¡Œæ•° 
 	static int rowNumber=0;  
- 	//µ¥´ÊÊı 
+ 	//å•è¯æ•° 
  	static int wordNumber=0; 
- 	//Í³¼ÆĞĞÊıµ¥´ÊÊıËùÓÃÊ±¼ä 
+ 	//ç»Ÿè®¡è¡Œæ•°å•è¯æ•°æ‰€ç”¨æ—¶é—´ 
  	static long time; 
  	
  	public static Map<String, Integer> map = new TreeMap<String, Integer>(); 
- 	/**³õÊ¼»¯µÇÂ½½çÃæ*/ 
+ 	/**åˆå§‹åŒ–ç™»é™†ç•Œé¢*/ 
  	public Main () 
  	{  
- 		//ÉèÖÃ×ÖÌå 
-    	    Font font =new Font("ºÚÌå", Font.PLAIN, 20);  
-    	    statistics=new JFrame("Ó¢ÎÄÎÄ±¾Í³¼Æ·ÖÎöĞ¡Èí¼ş"); 
+ 		//è®¾ç½®å­—ä½“ 
+    	    Font font =new Font("é»‘ä½“", Font.PLAIN, 20);  
+    	    statistics=new JFrame("è‹±æ–‡æ–‡æœ¬ç»Ÿè®¡åˆ†æå°è½¯ä»¶"); 
  		statistics.setSize(700, 380); 
  		input=new JLabel(); 
  		 
- 		file=new JLabel("µ¼ÈëÎÄ¼şÃû:"); 
+ 		file=new JLabel("å¯¼å…¥æ–‡ä»¶å:"); 
  		file.setBounds(20, 40, 150, 50); 
  		
- 		word=new JLabel("ÊäÈë²éÑ¯´ÊÆµµ¥´Ê:"); 
+ 		word=new JLabel("è¾“å…¥æŸ¥è¯¢è¯é¢‘å•è¯:"); 
  		word.setBounds(20, 100, 150, 50); 
 
- 		number=new JLabel("ÊäÈë¸ßÆµ´ÊµÄ¸öÊı:"); 
+ 		number=new JLabel("è¾“å…¥é«˜é¢‘è¯çš„ä¸ªæ•°:"); 
  		number.setBounds(20, 140, 150, 100); 
  		 
- 		highFrequencyButton=new JButton("Êä³öÇ°N¸ö¸ßÆµ´Ê");     
+ 		highFrequencyButton=new JButton("è¾“å‡ºå‰Nä¸ªé«˜é¢‘è¯");     
  		highFrequencyButton.setBounds(450, 160, 200, 35); 
  		highFrequencyButton.setFont(font); 
  		 
- 		wordCountButton=new JButton("Êä³ö´ÊÆµºÍÖù×´Í¼"); 
+ 		wordCountButton=new JButton("è¾“å‡ºè¯é¢‘å’ŒæŸ±çŠ¶å›¾"); 
  		wordCountButton.setBounds(450, 100, 200, 35); //230, 150, 200, 50
  		wordCountButton.setFont(font); 
 
- 		printFile=new JButton("´ÊÆµµ¼³öµ½ÎÄ¼ş"); 
+ 		printFile=new JButton("è¯é¢‘å¯¼å‡ºåˆ°æ–‡ä»¶"); 
  		printFile.setBounds(100, 250, 200, 50); 
  		printFile.setFont(font); 
  		 
- 		lineWordCount=new JButton("¸÷ÏîÍ³¼Æ"); 
+ 		lineWordCount=new JButton("å„é¡¹ç»Ÿè®¡"); 
  		lineWordCount.setBounds(350, 250, 200, 50); 
  		lineWordCount.setFont(font);  
  
- 		//¼ÓÈëÎÄ±¾¿ò 
+ 		//åŠ å…¥æ–‡æœ¬æ¡† 
  		file2 = new JTextField(); 
  		file2.setBounds(150, 40, 250, 40); 
 
@@ -125,14 +125,62 @@ public class Main extends JFrame
  		statistics.setLocation(300,400); 
  	} 
  	
-
-
-
-//
+	/**ä»æŒ‡å®šæ–‡ä»¶è¯»å…¥å•è¯å¹¶ç»Ÿè®¡è¯é¢‘*/ 
+     static void FileName(final Map<String, Integer> map) throws IOException 
+     { 
+ 		String file=file2.getText();
+ 		
+ 		if (file.isEmpty()) 
+ 		{ 
+ 			JOptionPane.showConfirmDialog(null, "è¯·è¾“å…¥æ–‡ä»¶åï¼","æç¤º",JOptionPane.DEFAULT_OPTION); 
+ 		} 
+ 		else  
+ 		{ 
+ 			try  
+ 			{ 
+ 				fr= new FileReader(file); 
+ 			}  
+ 			catch (FileNotFoundException e2)  
+ 			{ 
+ 				e2.printStackTrace(); 
+ 			}	 
+ 	    	BufferedReader b = new BufferedReader(fr); 
+ 	            String value= b.readLine(); 
+ 	            long start = System.currentTimeMillis(); 
+ 	            rowNumber=0; 
+ 	            while (value!= null)  
+ 	            { 
+ 	            	//å¤„ç†æ ‡ç‚¹ç¬¦å· 
+	            	String[] words = value.split("[^a-zA-Z]");  
+ 	            	for (int i = 0; i < words.length; i++)  
+ 	            	{ 
+ 	            		//å°†å¤§å†™å­—æ¯è½¬æ¢ä¸ºå°å†™å­—æ¯ 
+ 	                      String key = words[i].toLowerCase(); 
+ 	                		if (key.length() > 0)  
+ 	                		{ 
+ 	                      		if (!map.containsKey(key))  
+ 	                      		{ 
+ 	                      			wordNumber++; 
+ 	                          		map.put(key, 1); 
+ 	                          		}  
+ 	                      		else  
+ 	                      		{  
+ 	                      			int k = map.get(key)+1;// å¦‚æœä¸æ˜¯ç¬¬ä¸€æ¬¡å‡ºç°ï¼Œå°±æŠŠkå€¼++ 
+ 	                                map.put(key, k); 
+	                          		} 
+ 	                      		} 
+ 	                  		}  
+ 	                value = b.readLine(); 
+ 	                rowNumber++; 
+ 	            } 
+ 	            long end=System.currentTimeMillis(); 
+ 	            time=end-start; 
+ 		}    
+ 	} 
  	public static void main(String[] args) 
  	{ 
  	    Main main = new Main(); 
- 	    /**´ò¿ª²é¿´Ç°N¸ö¸ßÆµ´Ê½çÃæ*/ 
+ 	    /**æ‰“å¼€æŸ¥çœ‹å‰Nä¸ªé«˜é¢‘è¯ç•Œé¢*/ 
  		highFrequencyButton.addActionListener(new ActionListener() 
  		{ 
          public void actionPerformed(ActionEvent event) 
@@ -160,7 +208,7 @@ public class Main extends JFrame
        		       String s[] = str.split(",");   
        		         
        		       ArrayList<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(map.entrySet()); 
-       	           //°´´ÊÆµÅÅĞò 
+       	           //æŒ‰è¯é¢‘æ’åº 
        		       Collections.sort(list, new Comparator<Map.Entry<String, Integer>>()  
        		       { 
        	                public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) 
@@ -190,12 +238,12 @@ public class Main extends JFrame
             			 } 
             			i++; 
                		} 
-                   JOptionPane.showConfirmDialog(null,print+"\n"+"ËùÓÃÊ±¼äÎª£º"+(System.currentTimeMillis() - start)+"ms","½á¹û",JOptionPane.DEFAULT_OPTION); 
+                   JOptionPane.showConfirmDialog(null,print+"\n"+"æ‰€ç”¨æ—¶é—´ä¸ºï¼š"+(System.currentTimeMillis() - start)+"ms","ç»“æœ",JOptionPane.DEFAULT_OPTION); 
         	   } 
 			} 
 			else 
 			{ 
-				   	JOptionPane.showConfirmDialog(null, "ÇëÊäÈëÒª²éÑ¯µÄĞÅÏ¢£¡","ÌáÊ¾",JOptionPane.DEFAULT_OPTION);					 
+				   	JOptionPane.showConfirmDialog(null, "è¯·è¾“å…¥è¦æŸ¥è¯¢çš„ä¿¡æ¯ï¼","æç¤º",JOptionPane.DEFAULT_OPTION);					 
             } 
          } 
       }); 
@@ -205,7 +253,7 @@ public class Main extends JFrame
 
 
  		  
- 		 /**Ö´ĞĞ´ÊÆµĞ´ÈëÎÄ¼ş¹¦ÄÜ*/ 
+ 		 /**æ‰§è¡Œè¯é¢‘å†™å…¥æ–‡ä»¶åŠŸèƒ½*/ 
  		printFile.addActionListener(new ActionListener() 
  		{ 
          public void actionPerformed(ActionEvent event) 
@@ -231,12 +279,12 @@ public class Main extends JFrame
  				// TODO Auto-generated catch block 
  				e.printStackTrace(); 
  			} 
-         	JOptionPane.showConfirmDialog(null, "Ğ´ÈëÎÄ¼ş³É¹¦£¬ÔÚresult.txtÖĞ²é¿´£¡","ÌáÊ¾",JOptionPane.DEFAULT_OPTION);	    
+         	JOptionPane.showConfirmDialog(null, "å†™å…¥æ–‡ä»¶æˆåŠŸï¼Œåœ¨result.txtä¸­æŸ¥çœ‹ï¼","æç¤º",JOptionPane.DEFAULT_OPTION);	    
             } 
          } 
       }); 
  		 
- 		/**¸÷ÏîÍ³¼Æ¹¦ÄÜ*/ 
+ 		/**å„é¡¹ç»Ÿè®¡åŠŸèƒ½*/ 
  		lineWordCount.addActionListener(new ActionListener() 
 		{ 
          public void actionPerformed(ActionEvent event) 
@@ -254,30 +302,30 @@ public class Main extends JFrame
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 								
-                BufferedReader in = new BufferedReader(read);//¿ÉÓÃÓÚ¶ÁÈ¡Ö¸¶¨ÎÄ¼ş     
-                String str=null;//¶¨ÒåÒ»¸ö×Ö·û´®ÀàĞÍ±äÁ¿str
-                String b=null;//¶¨ÒåÒ»¸ö×Ö·û´®ÀàĞÍ±äÁ¿b
-                int i = 0;//¶¨ÒåÒ»¸öÕûĞÍ±äÁ¿,ÓÃÓÚÍ³¼ÆĞĞÊı
-                int c = 0,c1 = 0,c2 = 0,c3 = 0,c4 = 0,c5 = 0,c6 = 0;//¶¨ÒåÕûĞÍ±äÁ¿£¬ÓÃÓÚÍ³¼Æ×Ö·ûÊı
-                int d = 0;//¶¨ÒåÒ»¸öÕûĞÍ±äÁ¿£¬ÓÃÓÚÍ³¼Æ×Ö½ÚÊı
+                BufferedReader in = new BufferedReader(read);//å¯ç”¨äºè¯»å–æŒ‡å®šæ–‡ä»¶     
+                String str=null;//å®šä¹‰ä¸€ä¸ªå­—ç¬¦ä¸²ç±»å‹å˜é‡str
+                String b=null;//å®šä¹‰ä¸€ä¸ªå­—ç¬¦ä¸²ç±»å‹å˜é‡b
+                int i = 0;//å®šä¹‰ä¸€ä¸ªæ•´å‹å˜é‡,ç”¨äºç»Ÿè®¡è¡Œæ•°
+                int c = 0,c1 = 0,c2 = 0,c3 = 0,c4 = 0,c5 = 0,c6 = 0;//å®šä¹‰æ•´å‹å˜é‡ï¼Œç”¨äºç»Ÿè®¡å­—ç¬¦æ•°
+                int d = 0;//å®šä¹‰ä¸€ä¸ªæ•´å‹å˜é‡ï¼Œç”¨äºç»Ÿè®¡å­—èŠ‚æ•°
                 try {
-					while ((str = in.readLine())!= null) {//readLine()·½·¨, ÓÃÓÚ¶ÁÈ¡Ò»ĞĞ,Ö»Òª¶ÁÈ¡ÄÚÈİ²»Îª¿Õ¾ÍÒ»Ö±Ö´ĞĞ
-						i++;//Ã¿Ñ­»·Ò»´Î¾Í½øĞĞÒ»´Î×ÔÔö£¬ÓÃÓÚÍ³¼ÆÎÄ±¾ĞĞÊı
-						c += str.length();//ÓÃÓÚÍ³¼Æ×Ü×Ö·ûÊı
-						byte[] bytes=str.getBytes();//Çó³ö¸ÃĞĞµÄ×Ö½ÚÊı×é
-						d += bytes.length;//ÓÃÓÚÍ³¼Æ×Ü×Ö½ÚÊı
-						for (int j = 0; j < str.length(); j++) {//forÑ­»·µÄÌõ¼ş£¬µ±jĞ¡ÓÚ¸ÃĞĞ³¤¶ÈÊ±¾ÍÒ»Ö±Ñ­»·²¢×ÔÔö
-							b = Character.toString(str.charAt(j));//·µ»ØÒ»¸ö×Ö·û´®¶ÔÏó
-							if (b.matches("[\\u4e00-\\u9fa5]")) {//ifÓï¾äµÄÌõ¼ş£¬ÅĞ¶ÏÊÇ·ñÎªºº×Ö
-					            c1++;//ÈôÎªºº×ÖÔòc1×ÔÔö
-					        } else if(b.matches("[A-Z]")){//ifÓï¾äµÄÌõ¼ş£¬ÅĞ¶ÏÊÇ·ñÎª´óĞ´×ÖÄ¸
-								c2++;//ÈôÎª´óĞ´×ÖÄ¸Ôòc2×ÔÔö
-							} else if(b.matches("[a-z]")){//ifÓï¾äµÄÌõ¼ş£¬ÅĞ¶ÏÊÇ·ñÎªĞ¡Ğ´×ÖÄ¸
-								c3++;//ÈôÎªĞ¡Ğ´×ÖÄ¸Ôòc3×ÔÔö
-							} else if(b.matches("[0-9]")){//ifÓï¾äµÄÌõ¼ş£¬ÅĞ¶ÏÊÇ·ñÎªÊı×Ö
-								c4++;//ÈôÎªÊı×ÖÔòc4×ÔÔö
-							} else {//·ñÔò¿ÉÅĞ¶ÏÎªÆäËû×Ö·û
-								c5++;//ÈôÎªÆäËû×Ö·ûÔòc5×ÔÔö
+					while ((str = in.readLine())!= null) {//readLine()æ–¹æ³•, ç”¨äºè¯»å–ä¸€è¡Œ,åªè¦è¯»å–å†…å®¹ä¸ä¸ºç©ºå°±ä¸€ç›´æ‰§è¡Œ
+						i++;//æ¯å¾ªç¯ä¸€æ¬¡å°±è¿›è¡Œä¸€æ¬¡è‡ªå¢ï¼Œç”¨äºç»Ÿè®¡æ–‡æœ¬è¡Œæ•°
+						c += str.length();//ç”¨äºç»Ÿè®¡æ€»å­—ç¬¦æ•°
+						byte[] bytes=str.getBytes();//æ±‚å‡ºè¯¥è¡Œçš„å­—èŠ‚æ•°ç»„
+						d += bytes.length;//ç”¨äºç»Ÿè®¡æ€»å­—èŠ‚æ•°
+						for (int j = 0; j < str.length(); j++) {//forå¾ªç¯çš„æ¡ä»¶ï¼Œå½“jå°äºè¯¥è¡Œé•¿åº¦æ—¶å°±ä¸€ç›´å¾ªç¯å¹¶è‡ªå¢
+							b = Character.toString(str.charAt(j));//è¿”å›ä¸€ä¸ªå­—ç¬¦ä¸²å¯¹è±¡
+							if (b.matches("[\\u4e00-\\u9fa5]")) {//ifè¯­å¥çš„æ¡ä»¶ï¼Œåˆ¤æ–­æ˜¯å¦ä¸ºæ±‰å­—
+					            c1++;//è‹¥ä¸ºæ±‰å­—åˆ™c1è‡ªå¢
+					        } else if(b.matches("[A-Z]")){//ifè¯­å¥çš„æ¡ä»¶ï¼Œåˆ¤æ–­æ˜¯å¦ä¸ºå¤§å†™å­—æ¯
+								c2++;//è‹¥ä¸ºå¤§å†™å­—æ¯åˆ™c2è‡ªå¢
+							} else if(b.matches("[a-z]")){//ifè¯­å¥çš„æ¡ä»¶ï¼Œåˆ¤æ–­æ˜¯å¦ä¸ºå°å†™å­—æ¯
+								c3++;//è‹¥ä¸ºå°å†™å­—æ¯åˆ™c3è‡ªå¢
+							} else if(b.matches("[0-9]")){//ifè¯­å¥çš„æ¡ä»¶ï¼Œåˆ¤æ–­æ˜¯å¦ä¸ºæ•°å­—
+								c4++;//è‹¥ä¸ºæ•°å­—åˆ™c4è‡ªå¢
+							} else {//å¦åˆ™å¯åˆ¤æ–­ä¸ºå…¶ä»–å­—ç¬¦
+								c5++;//è‹¥ä¸ºå…¶ä»–å­—ç¬¦åˆ™c5è‡ªå¢
 							}
 						}
 					}
@@ -285,14 +333,14 @@ public class Main extends JFrame
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-                c6 = c2 + c3;//Í³¼Æ×ÜµÄ×ÖÄ¸Êı
+                c6 = c2 + c3;//ç»Ÿè®¡æ€»çš„å­—æ¯æ•°
                 try {
 					in.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}//¹Ø±ÕÁ÷
-                JOptionPane.showConfirmDialog(null,"¸ÃÎÄ±¾¹²ÓĞ"+i+"ĞĞ"+"\n"+"¸ÃÎÄ±¾¹²ÓĞ"+c+"¸ö×Ö·û"+"\n"+"ÆäÖĞ°üº¬£º"+c6+"¸ö×ÖÄ¸£¬ÆäÖĞ"+c2+"¸ö´óĞ´×ÖÄ¸£¬"+c3+"¸öĞ¡Ğ´×ÖÄ¸"+"\n"+c4+"¸öÊı×Ö"+"\n"+c5+"¸öÆäËû×Ö·û"+"\n"+"¹²ÓÃÊ±£º"+time+"ms"+"\n"+"¸ÃÎÄ±¾¹²ÓĞ"+d+"¸ö×Ö½Ú","½á¹û",JOptionPane.DEFAULT_OPTION);
+				}//å…³é—­æµ
+                JOptionPane.showConfirmDialog(null,"è¯¥æ–‡æœ¬å…±æœ‰"+i+"è¡Œ"+"\n"+"è¯¥æ–‡æœ¬å…±æœ‰"+c+"ä¸ªå­—ç¬¦"+"\n"+"å…¶ä¸­åŒ…å«ï¼š"+c6+"ä¸ªå­—æ¯ï¼Œå…¶ä¸­"+c2+"ä¸ªå¤§å†™å­—æ¯ï¼Œ"+c3+"ä¸ªå°å†™å­—æ¯"+"\n"+c4+"ä¸ªæ•°å­—"+"\n"+c5+"ä¸ªå…¶ä»–å­—ç¬¦"+"\n"+"å…±ç”¨æ—¶ï¼š"+time+"ms"+"\n"+"è¯¥æ–‡æœ¬å…±æœ‰"+d+"ä¸ªå­—èŠ‚","ç»“æœ",JOptionPane.DEFAULT_OPTION);
             }          	          	        	    
         } 
 		});  
