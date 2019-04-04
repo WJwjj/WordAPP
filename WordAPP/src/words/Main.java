@@ -125,10 +125,58 @@ public class Main extends JFrame
  		statistics.setLocation(300,400); 
  	} 
  	
-
-
-
-//
+	/**从指定文件读入单词并统计词频*/ 
+     static void FileName(final Map<String, Integer> map) throws IOException 
+     { 
+ 		String file=file2.getText();
+ 		
+ 		if (file.isEmpty()) 
+ 		{ 
+ 			JOptionPane.showConfirmDialog(null, "请输入文件名！","提示",JOptionPane.DEFAULT_OPTION); 
+ 		} 
+ 		else  
+ 		{ 
+ 			try  
+ 			{ 
+ 				fr= new FileReader(file); 
+ 			}  
+ 			catch (FileNotFoundException e2)  
+ 			{ 
+ 				e2.printStackTrace(); 
+ 			}	 
+ 	    	BufferedReader b = new BufferedReader(fr); 
+ 	            String value= b.readLine(); 
+ 	            long start = System.currentTimeMillis(); 
+ 	            rowNumber=0; 
+ 	            while (value!= null)  
+ 	            { 
+ 	            	//处理标点符号 
+	            	String[] words = value.split("[^a-zA-Z]");  
+ 	            	for (int i = 0; i < words.length; i++)  
+ 	            	{ 
+ 	            		//将大写字母转换为小写字母 
+ 	                      String key = words[i].toLowerCase(); 
+ 	                		if (key.length() > 0)  
+ 	                		{ 
+ 	                      		if (!map.containsKey(key))  
+ 	                      		{ 
+ 	                      			wordNumber++; 
+ 	                          		map.put(key, 1); 
+ 	                          		}  
+ 	                      		else  
+ 	                      		{  
+ 	                      			int k = map.get(key)+1;// 如果不是第一次出现，就把k值++ 
+ 	                                map.put(key, k); 
+	                          		} 
+ 	                      		} 
+ 	                  		}  
+ 	                value = b.readLine(); 
+ 	                rowNumber++; 
+ 	            } 
+ 	            long end=System.currentTimeMillis(); 
+ 	            time=end-start; 
+ 		}    
+ 	} 
  	public static void main(String[] args) 
  	{ 
  	    Main main = new Main(); 
